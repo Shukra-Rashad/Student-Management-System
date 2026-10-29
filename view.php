@@ -89,6 +89,7 @@ $result = $stmt->get_result();
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Created At</th>
+                <th>Action</th>
         </tr>
         </thead>
 
@@ -104,11 +105,16 @@ $result = $stmt->get_result();
                     echo "<td>" . htmlspecialchars($row['email']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['phone']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
+
+                    echo "<td>";
+                    echo "<a href='update.php?id=" . (int)$row['id'] . "' class='btn btn-success btn-sm me-2'>Edit</a>";
+                    echo "<a href='delete.php?id=" . (int)$row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete this student?\");'>Delete</a>";
+                    echo "</td>";
                     echo "</tr>";
                 }
 
             } else {
-                echo "<tr><td colspan='5' class='text-center'>No students found.</td></tr>";
+                echo "<tr><td colspan='6' class='text-center'>No students found.</td></tr>";
             }
             ?>
 
